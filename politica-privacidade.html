@@ -3,54 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidade - Fluxograma Prisma</title>
+    <title>Política de Privacidade — PrismaFlow</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+        :root {
+            --prism-navy: #0f1e35;
+            --prism-blue: #1a6eb5;
+            --prism-teal: #0d9488;
+            --prism-ice: #e8f4fd;
+            --prism-light: #f5f9ff;
+            --prism-text: #1c2b3a;
+            --prism-muted: #5a7a95;
+            --prism-border: #d0e4f0;
+            --prism-accent: #0ea5e9;
         }
-        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        h2 { color: #2c3e50; margin-top: 25px; }
-        p { margin-bottom: 15px; }
-        .footer { margin-top: 50px; font-size: 0.9em; color: #7f8c8d; border-top: 1px solid #eee; padding-top: 20px; }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--prism-light);
+            color: var(--prism-text);
+            line-height: 1.75;
+            font-size: 16px;
+        }
+
+        /* HEADER */
+        .header {
+            background: var(--prism-navy);
+            padding: 48px 24px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -60px; left: -80px;
+            width: 320px; height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(14,165,233,0.18) 0%, transparent 70%);
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; right: -40px;
+            width: 260px; height: 260px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(13,148,136,0.15) 0%, transparent 70%);
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(14,165,233,0.15);
+            border: 1px solid rgba(14,165,233,0.3);
+            border-radius: 100px;
+            padding: 6px 18px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--prism-accent);
+            margin-bottom: 20px;
+            position: relative; z-index: 1;
+        }
+
+        .header h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: #fff;
+            margin-bottom: 10px;
+            position: relative; z-index: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .header-sub {
+            color: rgba(255,255,255,0.55);
+            font-size: 14px;
+            font-weight: 300;
+            position: relative; z-index: 1;
+        }
+
+        /* PRISMA LOGO ICON */
+        .prisma-icon {
+            width: 56px; height: 56px;
+            margin: 0 auto 20px;
+            position: relative; z-index: 1;
+        }
+
+        .prisma-icon svg { width: 100%; height: 100%; }
+
+        /* CONTAINER */
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 24px 64px;
+        }
+
+        /* INTRO CARD */
+        .intro-card {
+            background: white;
+            border: 1px solid var(--prism-border);
+            border-left: 4px solid var(--prism-teal);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 40px;
+            font-size: 15px;
+            color: var(--prism-muted);
+        }
+
+        .intro-card strong { color: var(--prism-blue); }
+
+        /* SECTION */
+        .section {
+            background: white;
+            border: 1px solid var(--prism-border);
+            border-radius: 12px;
+            padding: 32px 32px 28px;
+            margin-bottom: 20px;
+            transition: box-shadow 0.2s;
+        }
+
+        .section:hover {
+            box-shadow: 0 4px 24px rgba(15,30,53,0.08);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .section-number {
+            min-width: 36px; height: 36px;
+            background: var(--prism-ice);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--prism-blue);
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: var(--prism-navy);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+
+        .section p {
+            color: #3d5468;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .section p:last-child { margin-bottom: 0; }
+
+        /* HIGHLIGHT LIST */
+        .highlight-list {
+            list-style: none;
+            margin: 4px 0 0;
+        }
+
+        .highlight-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14.5px;
+            color: #3d5468;
+            margin-bottom: 6px;
+            background: var(--prism-light);
+            border: 1px solid #e2eef7;
+        }
+
+        .highlight-list li::before {
+            content: '✕';
+            color: #e74c3c;
+            font-weight: 700;
+            font-size: 12px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .highlight-list li.positive::before {
+            content: '✓';
+            color: var(--prism-teal);
+        }
+
+        .highlight-list li strong {
+            color: var(--prism-navy);
+            font-weight: 600;
+        }
+
+        /* DIVIDER */
+        hr.divider {
+            border: none;
+            border-top: 1px solid var(--prism-border);
+            margin: 16px 0;
+        }
+
+        /* CONTACT BOX */
+        .contact-box {
+            background: linear-gradient(135deg, var(--prism-navy) 0%, #1a3a5c 100%);
+            border-radius: 14px;
+            padding: 28px 32px;
+            margin-top: 36px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact-icon {
+            width: 48px; height: 48px;
+            background: rgba(14,165,233,0.15);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            font-size: 22px;
+        }
+
+        .contact-box h3 {
+            font-family: 'DM Serif Display', serif;
+            color: white;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .contact-box p {
+            color: rgba(255,255,255,0.6);
+            font-size: 13.5px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--prism-navy);
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'DM Serif Display', serif;
+            color: white;
+            font-size: 1.1rem;
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
+        }
+
+        .footer-logo span { color: var(--prism-accent); }
+
+        footer p {
+            color: rgba(255,255,255,0.4);
+            font-size: 12.5px;
+        }
+
+        footer .dev {
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        /* BADGE ROW */
+        .meta-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+        }
+
+        .meta-chip {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            background: white;
+            border: 1px solid var(--prism-border);
+            border-radius: 100px;
+            padding: 5px 14px;
+            color: var(--prism-muted);
+        }
+
+        .meta-chip.highlight {
+            background: var(--prism-ice);
+            border-color: var(--prism-blue);
+            color: var(--prism-blue);
+        }
+
+        @media (max-width: 600px) {
+            .section { padding: 24px 20px 20px; }
+            .contact-box { flex-direction: column; gap: 14px; }
+            .container { padding: 32px 16px 48px; }
+        }
     </style>
 </head>
 <body>
 
-    <h1>Política de Privacidade</h1>
-    <p>Esta Política de Privacidade descreve como o aplicativo <strong>Fluxograma Prisma</strong> lida com as informações dos usuários.</p>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="prisma-icon">
+            <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="28,4 52,48 4,48" fill="none" stroke="rgba(14,165,233,0.6)" stroke-width="2"/>
+                <polygon points="28,14 46,48 10,48" fill="rgba(13,148,136,0.25)" stroke="rgba(13,148,136,0.5)" stroke-width="1.5"/>
+                <line x1="28" y1="4" x2="28" y2="48" stroke="rgba(14,165,233,0.3)" stroke-width="1" stroke-dasharray="3,3"/>
+                <circle cx="28" cy="4" r="2.5" fill="#0ea5e9"/>
+                <circle cx="52" cy="48" r="2.5" fill="#0d9488"/>
+                <circle cx="4" cy="48" r="2.5" fill="#0d9488"/>
+            </svg>
+        </div>
+        <div class="header-badge">Política de Privacidade</div>
+        <h1>PrismaFlow</h1>
+        <p class="header-sub">Fluxograma PRISMA para revisões sistemáticas</p>
+    </header>
 
-    <h2>1. Coleta de Informações</h2>
-    <p>O aplicativo <strong>Fluxograma Prisma</strong> foi projetado para ser uma ferramenta de consulta técnica e científica. Informamos que:</p>
-    <ul>
-        <li><strong>Não coletamos</strong> dados pessoais identificáveis (como nome, e-mail, telefone ou endereço).</li>
-        <li><strong>Não acessamos</strong> arquivos, câmera, contatos ou localização do seu dispositivo.</li>
-        <li><strong>Não utilizamos</strong> cookies ou tecnologias de rastreamento para monitorar sua atividade.</li>
-    </ul>
+    <!-- CONTEÚDO -->
+    <div class="container">
 
-    <h2>2. Uso de Dados</h2>
-    <p>Uma vez que não há coleta de dados, não existe armazenamento, processamento ou compartilhamento de informações dos usuários com terceiros.</p>
+        <div class="meta-row">
+            <span class="meta-chip highlight">Versão 1.0</span>
+            <span class="meta-chip">Abril de 2026</span>
+            <span class="meta-chip">Sem coleta de dados</span>
+        </div>
 
-    <h2>3. Links Externos</h2>
-    <p>O aplicativo não contém links para sites, serviços ou anúncios externos, operando de forma independente para garantir a fluidez do conteúdo técnico apresentado.</p>
+        <div class="intro-card">
+            Este documento descreve as práticas de privacidade do aplicativo <strong>PrismaFlow</strong>, uma ferramenta criada para auxiliar pesquisadores, profissionais e estudantes na construção de fluxogramas PRISMA em revisões sistemáticas e integrativas de literatura. Leia com atenção para compreender como tratamos — ou, mais precisamente, como <strong>não tratamos</strong> — as suas informações.
+        </div>
 
-    <h2>4. Público-Alvo</h2>
-    <p>O aplicativo é destinado a profissionais de fisioterapia e estudantes da área acadêmica, com classificação indicativa para maiores de 18 anos.</p>
+        <!-- SEÇÃO 1 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2>Coleta de Informações</h2>
+            </div>
+            <p>O <strong>PrismaFlow</strong> foi desenvolvido como uma ferramenta técnico-científica offline. Não coletamos, armazenamos nem transmitimos qualquer dado do usuário. Especificamente:</p>
+            <ul class="highlight-list">
+                <li><strong>Dados pessoais</strong> — nome, e-mail, telefone ou endereço não são solicitados nem coletados.</li>
+                <li><strong>Permissões de dispositivo</strong> — o aplicativo não acessa câmera, microfone, contatos, localização ou arquivos pessoais.</li>
+                <li><strong>Rastreamento</strong> — não utilizamos cookies, SDKs de analytics, Firebase, ou qualquer tecnologia de monitoramento de comportamento.</li>
+                <li><strong>Identificadores</strong> — não coletamos IDFA, GAID ou qualquer identificador publicitário.</li>
+            </ul>
+        </div>
 
-    <h2>5. Alterações nesta Política</h2>
-    <p>Esta política pode ser atualizada ocasionalmente. Qualquer alteração será refletida nesta página com a respectiva data de atualização.</p>
+        <!-- SEÇÃO 2 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2>Uso e Armazenamento de Dados</h2>
+            </div>
+            <p>Uma vez que nenhum dado é coletado, não há processamento, armazenamento ou compartilhamento de informações com terceiros, parceiros ou servidores externos. Todos os dados inseridos pelo usuário durante o uso do aplicativo — como números de artigos e etapas do fluxograma — permanecem exclusivamente no dispositivo e sob controle do próprio usuário.</p>
+        </div>
 
-    <h2>6. Contato</h2>
-    <p>Para dúvidas ou esclarecimentos sobre esta política, entre em contato através do canal de suporte acadêmico ou profissional da desenvolvedora.</p>
+        <!-- SEÇÃO 3 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2>Links e Serviços Externos</h2>
+            </div>
+            <p>O PrismaFlow opera de forma independente e autocontida. O aplicativo não contém anúncios, links para sites externos, integrações com redes sociais, nem qualquer forma de comunicação com servidores de terceiros. A experiência do usuário é inteiramente local ao dispositivo.</p>
+        </div>
 
-    <div class="footer">
-        <p>Desenvolvido por: Profa. Natty Varella</p>
-        <p>Última atualização: Abril de 2026</p>
+        <!-- SEÇÃO 4 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2>Público-Alvo e Classificação Etária</h2>
+            </div>
+            <p>O PrismaFlow é destinado a pesquisadores, docentes, estudantes de pós-graduação e profissionais das ciências da saúde envolvidos na produção de revisões sistemáticas ou integrativas de literatura. O aplicativo possui classificação indicativa para <strong>maiores de 18 anos</strong>, em conformidade com os requisitos da Google Play Store.</p>
+            <p>O aplicativo não é direcionado a crianças ou adolescentes e não coleta dados de nenhum usuário, independentemente da faixa etária.</p>
+        </div>
+
+        <!-- SEÇÃO 5 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h2>Segurança</h2>
+            </div>
+            <p>Por não realizar coleta ou transmissão de dados, o PrismaFlow elimina os principais vetores de risco relacionados à privacidade digital. Todas as informações geradas durante o uso são processadas localmente, sem exposição a redes externas.</p>
+        </div>
+
+        <!-- SEÇÃO 6 -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h2>Alterações nesta Política</h2>
+            </div>
+            <p>Esta Política de Privacidade pode ser revisada periodicamente para refletir atualizações no aplicativo ou mudanças regulatórias. Em caso de alterações relevantes, a data de atualização será revisada nesta página. Recomendamos a consulta periódica a este documento.</p>
+        </div>
+
+        <!-- CONTATO -->
+        <div class="contact-box">
+            <div class="contact-icon">✉️</div>
+            <div>
+                <h3>Dúvidas ou esclarecimentos?</h3>
+                <p>Entre em contato pelo canal de suporte disponível na página do aplicativo na Google Play Store ou diretamente com a desenvolvedora responsável.</p>
+            </div>
+        </div>
+
     </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">Prisma<span>Flow</span></div>
+        <p class="dev">Desenvolvido por Prof.ª Natália Varella · Educação Inovadora em Fisioterapia</p>
+        <p style="margin-top: 14px;">Última atualização: Abril de 2026 &nbsp;·&nbsp; Todos os direitos reservados</p>
+    </footer>
 
 </body>
 </html>
